@@ -9,42 +9,58 @@
 // Caso contrário, retorna a lista formada pelo jogador e sua estratégia. Se os dois jogadores usarem a mesma estratégia, o primeiro jogador vence
 // Siga o modelo:
 // function rpsGameWinner(game) {  if (game.length != 2) {    throw 'WrongNumberOfPlayers';  }  // your code here...}console.log(rpsGameWinner(game)) => [ 'Dave', 'TE' ]
+
 function verificaJogo(jogo){
-    let jogadas = ["PA","PE","TE"]
-    //console.log(!jogadas.includes(jogo[1][1].toUpperCase()));
+    let jogadasAceitas = ["PA","PE","TE"]
+
     if(jogo.length != 2){
         throw new Error("WrongNumberOfPlayers");
-    } else if (!jogadas.includes(jogo[0][1].toUpperCase()) || !jogadas.includes(jogo[1][1].toUpperCase())){
+    } else if (!jogadasAceitas.includes(jogo[0][1].toUpperCase()) || !jogadasAceitas.includes(jogo[1][1].toUpperCase())){
         throw new Error("NoSuchStrategyError");
     }
     return true;
 }
-function jankepo(jogo){ 
-    if(verificaJogo(jogo)){
-            if(jogo[0][1].toUpperCase() == jogo[1][1].toUpperCase()){
-                console.log(jogo[0][0] + " ganhou!");
-            }
-            else if((jogo[0][1].toUpperCase() == 'TE') && (jogo[1][1].toUpperCase() =='PA')){
-                console.log(jogo[0][0] + " ganhou!");
-            }
-            else if ((jogo[0][1].toUpperCase() == 'PE') && (jogo[1][1].toUpperCase() =='TE')){
-                console.log(jogo[0][0] + " ganhou!");
-            } 
-            else if ((jogo[0][1].toUpperCase() == 'PA') && (jogo[1][1].toUpperCase() =='PE')){
-                console.log(jogo[0][0] + " ganhou!");
-            }
-            //jogador 2 ganha
-            else if((jogo[0][1].toUpperCase() == 'PA') && (jogo[1][1].toUpperCase() =='TE')){
-                console.log(jogo[1][0] + " ganhou!");
-            }
-            else if ((jogo[0][1].toUpperCase() == 'TE') && (jogo[1][1].toUpperCase() =='PE')){
-                console.log(jogo[1][0] + " ganhou!");
-            } 
-            else if ((jogo[0][1].toUpperCase() == 'PE') && (jogo[1][1].toUpperCase() =='PA')){
-                console.log(jogo[1][0] + " ganhou!");
-            }
+//["Isabela", "PE" ]
+function jogar(jogada1,jogada2){
+    //Jogador 1 ganha
+    if(jogada1[1].toUpperCase() == jogada2[1].toUpperCase()){
+        console.log(jogada1[0] + " ganhou!");
     }
+    else if((jogada1[1].toUpperCase() == 'TE') && (jogada2[1].toUpperCase() =='PA')){
+        console.log(jogada1[0] + " ganhou!");
+    }
+    else if ((jogada1[1].toUpperCase() == 'PE') && (jogada2[1].toUpperCase() =='TE')){
+        console.log(jogada1[0] + " ganhou!");
+    } 
+    else if ((jogada1[1].toUpperCase() == 'PA') && (jogada2[1].toUpperCase() =='PE')){
+        console.log(jogada1[0] + " ganhou!");
+    }
+
+    //jogador 2 ganha
+    else if((jogada1[1].toUpperCase() == 'PA') && (jogada2[1].toUpperCase() =='TE')){
+        console.log(jogada2[0] + " ganhou!");
+    }
+    else if ((jogada1[1].toUpperCase() == 'TE') && (jogada2[1].toUpperCase() =='PE')){
+        console.log(jogada2[0] + " ganhou!");
+    } 
+    else if ((jogada1[1].toUpperCase() == 'PE') && (jogada2[1].toUpperCase() =='PA')){
+        console.log(jogada2[0] + " ganhou!");
+    }
+
+}
+
+function jankepo(jogo){
+
+    if(verificaJogo(jogo)){
+        jogar(jogo[0],jogo[1])      
+    }
+    
 }
 
 
 jankepo([["Isabela", "PE" ],["Maribel","PA"]]);
+
+
+
+
+
